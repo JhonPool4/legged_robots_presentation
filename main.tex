@@ -1,0 +1,362 @@
+\documentclass[10pt]{beamer}
+%\hypersetup{pdfpagemode=FullScreen}
+\usepackage[utf8]{inputenc}
+\usetheme{Madrid}
+
+% figure configuration
+\usepackage{caption}
+\captionsetup[figure]{font=scriptsize, justification=centering}
+				
+% footnote configuration
+\setbeamerfont{footnote}{size=\tiny}
+
+% subfig
+\usepackage{subfig}
+\captionsetup[subfigure]{font=scriptsize, justification=centering}
+
+% break equation
+\usepackage{amsmath}
+\usepackage{breqn}
+% introduction parameters
+\title[Article presentation]{A muscle-reflex model that encodes principles of legged mechanics, produces human walking dynamics and muscle activities}
+\subtitle{
+	 	\textbf{Conference}: IEEE Transactions on Neural Systems and Rehabilitation Engineering, June 2010
+	\\ \textbf{Authors}: H. Geyer and H. Herr}
+\author[Jhon Charaja]{Jhon Charaja\inst{1}}
+\institute[USP]{
+	\inst{1} Universidade de São Paulo, Brasil
+}
+\date{\today}
+
+% table of contents
+\AtBeginSection[]
+{
+	\begin{frame}
+		\frametitle{Table of Contents}
+		\tableofcontents[currentsection]
+	\end{frame}
+}
+
+\AtBeginSubsection[]
+{
+	\begin{frame}
+		\frametitle{Table of Contents}
+		\tableofcontents[currentsection,currentsubsection]
+	\end{frame}
+}
+
+% begin document
+\begin{document}
+% frame: introduction
+\frame{\titlepage}
+
+\section{Motivation}
+% frame: motivation
+\begin{frame}
+	\frametitle{Motivation}
+	The bipedal spring-mass model could describes the legged locomotion dynamics\footnotemark[1]
+	\begin{columns}
+		\column{0.35\textwidth}
+		\begin{figure}
+			\begin{overprint}
+				\onslide<1>\includegraphics[width=.9\textwidth]{images/slip/double_SLIP.pdf}
+				\onslide<2>\includegraphics[width=.9\textwidth]{images/slip/double_SLIP_spring_leg.pdf}
+				\onslide<3>\includegraphics[width=.9\textwidth]{images/slip/double_SLIP_mass.pdf}
+				\onslide<4->\includegraphics[width=.9\textwidth]{images/slip/double_SLIP.pdf}		
+			\end{overprint}			
+			\caption{Spring-loaded inverted pendulum (SLIP)}
+		\end{figure}
+	
+		\column{0.65\textwidth}
+		\begin{itemize}
+			\item SLIP model describes the dynamics during walking and running\footnotemark[1] \\[1em]
+			\item SLIP model is based on self-stability and compliant leg behavior principles\footnotemark[2] \\[1em]
+			\item SLIP model does not present a clear relation with human motor control\footnotemark[2] \\[1em]	
+			\item Spinal reflexes can relate sensory information of leg with muscle activation\footnotemark[2]
+		\end{itemize}
+	\end{columns}
+	\footnotetext[1]{H. Geyer (2006).}
+	\footnotetext[2]{H. Geyer (2010).}
+\end{frame}
+
+
+\section{Objective}	
+% frame: solution
+\begin{frame}
+	\frametitle{Objective}
+	\centering
+	\LARGE
+	\bf
+	To develop a neuromuscular human model that encodes the principles of legged locomotion with muscular reflexes
+\end{frame}
+
+\section{Methodology}
+% frame: from SLIP to tree part leg
+\subsection[Methodology]{New model of human lower limb}
+\begin{frame}
+	\frametitle{New model of human lower limb}
+	\begin{itemize}
+		\only<1>{\item Replacing the spring leg with a segmented leg}
+		\only<2>{\item Replacing the point of mass with a trunk}
+		\only<3,4>{\item Vastus group muscle (VAS) generates knee extension motion
+				 \item Soleus muscle (SOL) generates ankle plantarflexion motion}
+		\only<5>{\item Gastrocnemius muscle (GAS) generates knee flexion and ankle plantarflexion motion
+				 \item Soleus muscle (TA) generates ankle dorsiflexion motion}
+		\only<6>{\item Gluteus muscle group (GLU) generates negative orientation
+				 \item Hip flexor muscle group (HFL)  generate positive orientation}	 	 
+	\end{itemize}
+	\begin{figure}
+		\begin{overprint}
+		\onslide<1>
+		\centering
+		\begin{columns}
+			\begin{column}{.5\textwidth}
+				\centering
+				\includegraphics[height=.5\textheight]{images/slip/double_SLIP.pdf}
+				\caption{Spring-loaded inverted pendulum (SLIP)}				
+			\end{column}
+			\begin{column}{.5\textwidth}
+				\centering
+				\includegraphics[height=.5\textheight]{images/new_model/left_3leg.pdf} 
+				\caption{New model with three segment leg}				
+			\end{column}
+		\end{columns}
+
+		\onslide<2>
+		\centering
+		\begin{columns}
+			\begin{column}{.5\textwidth}
+				\centering
+				\includegraphics[height=.5\textheight]{images/slip/double_SLIP.pdf}
+				\caption{Spring-loaded inverted pendulum (SLIP)}				
+			\end{column}
+			\begin{column}{.5\textwidth}
+				\centering
+				\includegraphics[height=.5\textheight]{images/new_model/left_3leg_trunk.pdf} 
+				\caption{New model with three segment leg and a trunk}
+			\end{column}	
+		\end{columns}	
+		
+		\onslide<3> 
+		\begin{columns}
+			\begin{column}{.55\textwidth}
+				\centering
+				\includegraphics[height=.5\textheight]{images/new_model/stance/muscle_vas_sol.pdf}
+				\caption{New bipedal locomotion model with muscles}
+			\end{column}
+			\begin{column}{.5\textwidth}
+				\centering
+				\subfloat[Knee extension]{\includegraphics[height=.20\textheight]{images/knee_extension.pdf}} \\
+				\subfloat[Ankle dorsiflexion]{\includegraphics[height=.20\textheight]{images/ankle_planarflexion.pdf}}
+			\end{column}  
+		\end{columns}
+	
+		\onslide<4> 
+		\begin{columns}
+			\begin{column}{.55\textwidth}
+				\centering
+				\includegraphics[height=.5\textheight]{images/new_model/stance/muscle_vas_sol.pdf}
+				\caption{New bipedal locomotion model with muscles}
+			\end{column}
+			\begin{column}{.5\textwidth}
+				\centering
+				\includegraphics[height=.5\textheight]{images/new_model/stance/muscle_vas_sol_overextension.pdf}
+				\caption{overextension case}
+			\end{column}  
+		\end{columns}
+			
+		\onslide<5>
+		\begin{columns}
+			\begin{column}{.5\textwidth}
+				\includegraphics[height=.5\textheight]{images/new_model/stance/muscle_vas_sol_gas_ta.pdf} 
+				\caption{New bipedal locomotion model with muscles}
+			\end{column}
+			\begin{column}{.5\textwidth}
+				\begin{itemize}
+					\item GAS prevents knee overextension  \\[1em]
+					\item GAS contributes to generate compliant behavior \\[1em]
+					\item TA prevents ankle overextension
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	
+		\onslide<6>
+			\begin{columns}
+				\begin{column}{.5\textwidth}
+					\includegraphics[height=.5\textheight]{images/new_model/stance/muscle_vas_sol_gas_ta_ham_glu_hfl_floor.pdf} 
+					\caption{New bipedal locomotion model with muscles}
+				\end{column}
+				\begin{column}{.5\textwidth}
+					\begin{itemize}
+							\item GLU and HFL maintain the balance of the trunk  \\ [1em]
+							\item Hamstring muscle group (HAM) prevents knee hyperextension
+					\end{itemize}
+				\end{column}
+			\end{columns}	
+		\end{overprint}			
+	\end{figure}
+
+\end{frame}
+
+\subsection[Methodology]{General equation of muscle stimuli}
+\begin{frame}
+	\frametitle{General equation of muscle stimuli}
+	\begin{itemize}
+		\item Spinal reflexes activate muscles during locomotion
+	\end{itemize}
+
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=.45\textheight]{images/new_model/stance/muscle_all.pdf}
+				\caption{New bipedal locomotion model with muscles}	
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{block}{}
+				The stimulation of a muscle is given by
+				\begin{align*}
+					S_{m}(t)&=S_{0,m} + G_{m} F_{m} \delta t_m,  \\
+					\delta t_m &= (t-\Delta t_{m}),
+ 				\end{align*}
+				where,
+				\begin{itemize}
+					\item $S_{m}$: stimulation
+					\item $S_{0}$: prestimulation
+					\item $F_{m}$: force
+					\item $G_{m}$: gain
+					\item $\Delta t_{m}$: muscle time delay
+					\item $\Delta L_m$: muscle stretch
+				\end{itemize}
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection[Methodology]{Muscle stimuli during the stance phase}
+\begin{frame}
+	\frametitle{Muscle stimuli during the stance phase}
+	\begin{itemize}
+		\item Vastus group muscle (VAS) generates knee extension motion
+		\item Soleus muscle (SOL) generates ankle plantarflexion motion
+	\end{itemize}
+
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=.45\textheight]{images/new_model/stance/muscle_vas_sol.pdf}
+				\caption{New bipedal locomotion model with muscles}	
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{block}{}
+				The stimulation of \textbf{VAS} is given by
+				\begin{equation*}
+					S_{VAS}(t)=S_{0,VAS} + G_{VAS} F_{VAS} (t-\Delta t_{VAS})
+				\end{equation*}
+			\end{block}
+			\begin{block}{}
+				The stimulation of \textbf{SOL} is given by
+				\begin{equation*}
+					S_{SOL}(t)=S_{0,SOL} + G_{SOL} F_{SOL} (t-\Delta t_{SOL})
+				\end{equation*}
+			\end{block}		
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Muscle stimuli during the stance phase}
+	
+	\begin{block}{}
+		The stimulation of \textbf{GAS} is given by
+		\begin{equation*}
+			S_{GAS}(t)=S_{0,GAS} + G_{GAS} F_{GAS} (t-\Delta t_{GAS})
+		\end{equation*}
+	\end{block}
+	\begin{block}{}
+		The stimulation of \textbf{TA} is given by	
+		\begin{equation*}
+			S_{TA}(t)=S_{0,TA} + G_{TA} (\Delta L_{TA}) (t-\Delta t_{TA}) - G_{SOL,TA} F_{SOL} (t-\Delta t_{SOL})
+		\end{equation*}
+	\end{block}		
+
+		
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=.45\textheight]{images/new_model/stance/muscle_vas_sol_gas_ta.pdf}
+				\caption{New bipedal locomotion model with muscles}	
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{itemize}
+				\item GAS prevents knee overextension 
+				\item GAS contributes to generate compliant behavior 
+				\item TA prevents ankle overextension
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Muscle stimuli during the stance phase}
+	
+	\begin{block}{}
+		The stimulation of \textbf{GLU} and \textbf{HFL}  is given by
+		\begin{equation*}
+			S_{GLU}(t) \sim \pm k_p (\theta-\theta_{ref}) + k_d \dot{\theta}
+		\end{equation*}
+	\end{block}
+	\begin{block}{}
+		The stimulation of \textbf{HAM} is given by	
+		\begin{equation*}
+			S_{HAM} \sim S_{GLU}
+		\end{equation*}
+	\end{block}		
+	
+	
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=.45\textheight]{images/new_model/stance/muscle_vas_sol_gas_ta_ham_glu_hfl_floor.pdf}
+				\caption{New bipedal locomotion model with muscles}	
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{itemize}
+				\item GLU generates negative orientation
+				\item HAM prevents knee hyperextension
+				\item HFL generate positive orientation				
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+\subsection[Methodology]{Muscle stimuli during the swing phase}
+
+
+\section{Results}
+
+
+\begin{frame}
+	\begin{exampleblock}{Introduction}
+		Hi guys, the title of the article is "  " was presented in the conference " " in 2010 by the authors "  " .
+	\end{exampleblock}
+	\begin{exampleblock}{Motivation}
+		The bipedal spring-mass model is a well-know model that can describe the locomotion  dynamics of legged mechanisms.
+	\end{exampleblock}
+	\begin{exampleblock}
+		Add support files of spinal reflexes
+	\end{exampleblock}
+\end{frame}
+
+\end{document}
+
+
