@@ -32,7 +32,7 @@
 \AtBeginSection[]
 {
 	\begin{frame}
-		\frametitle{Table of Contents}
+		\frametitle{Table of contents}
 		\tableofcontents[currentsection]
 	\end{frame}
 }
@@ -40,7 +40,7 @@
 \AtBeginSubsection[]
 {
 	\begin{frame}
-		\frametitle{Table of Contents}
+		\frametitle{Table of contents}
 		\tableofcontents[currentsection,currentsubsection]
 	\end{frame}
 }
@@ -101,7 +101,7 @@
 		\only<3,4>{\item Vastus group muscle (VAS) generates knee extension motion
 				 \item Soleus muscle (SOL) generates ankle plantarflexion motion}
 		\only<5>{\item Gastrocnemius muscle (GAS) generates knee flexion and ankle plantarflexion motion
-				 \item Soleus muscle (TA) generates ankle dorsiflexion motion}
+				 \item Tibialis anterior muscle (TA) generates ankle dorsiflexion motion}
 		\only<6>{\item Gluteus muscle group (GLU) generates negative orientation
 				 \item Hip flexor muscle group (HFL)  generate positive orientation}	 	 
 	\end{itemize}
@@ -237,10 +237,18 @@
 \subsection[Methodology]{Muscle stimuli during the stance phase}
 \begin{frame}
 	\frametitle{Stance phase: initial contact}
-	\begin{itemize}
-		\item Vastus group muscle (VAS) generates knee extension motion
-		\item Soleus muscle (SOL) generates ankle plantarflexion motion
-	\end{itemize}
+	\begin{block}{}
+		The stimulation of \textbf{VAS} is given by
+		\begin{equation*}
+			S_{VAS}(t)=S_{0,VAS} + G_{VAS} F_{VAS} (t-\Delta t_{VAS})
+		\end{equation*}
+	\end{block}
+	\begin{block}{}
+		The stimulation of \textbf{SOL} is given by
+		\begin{equation*}
+			S_{SOL}(t)=S_{0,SOL} + G_{SOL} F_{SOL} (t-\Delta t_{SOL})
+		\end{equation*}
+	\end{block}		
 
 	\begin{columns}
 		\begin{column}{.5\textwidth}
@@ -251,18 +259,10 @@
 			\end{figure}
 		\end{column}
 		\begin{column}{.5\textwidth}
-			\begin{block}{}
-				The stimulation of \textbf{VAS} is given by
-				\begin{equation*}
-					S_{VAS}(t)=S_{0,VAS} + G_{VAS} F_{VAS} (t-\Delta t_{VAS})
-				\end{equation*}
-			\end{block}
-			\begin{block}{}
-				The stimulation of \textbf{SOL} is given by
-				\begin{equation*}
-					S_{SOL}(t)=S_{0,SOL} + G_{SOL} F_{SOL} (t-\Delta t_{SOL})
-				\end{equation*}
-			\end{block}		
+			\begin{itemize}
+				\item Vastus group muscle (VAS) generates knee extension motion
+				\item Soleus muscle (SOL) generates ankle plantarflexion motion
+			\end{itemize}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -308,17 +308,11 @@
 	
 	\begin{block}{}
 		The stimulation of \textbf{GLU} and \textbf{HFL}  is given by
-		\begin{equation*}
-			S_{GLU}(t) \sim \pm k_p (\theta-\theta_{ref}) + k_d \dot{\theta}
-		\end{equation*}
+		\begin{align*}
+			S_{GLU}(t) &\sim k_p (\theta-\theta_{ref})_{GLU} + k_d \dot{\theta}_{GLU}, \\
+			S_{HFL}(t) &\sim k_p (\theta-\theta_{ref})_{HFL} + k_d \dot{\theta}_{HFL}
+		\end{align*}
 	\end{block}
-	\begin{block}{}
-		The stimulation of \textbf{HAM} is given by	
-		\begin{equation*}
-			S_{HAM} \sim S_{GLU}
-		\end{equation*}
-	\end{block}		
-	
 	
 	\begin{columns}
 		\begin{column}{.5\textwidth}
@@ -329,6 +323,13 @@
 			\end{figure}
 		\end{column}
 		\begin{column}{.5\textwidth}
+			\begin{block}{}
+				The stimulation of \textbf{HAM} is given by	
+				\begin{equation*}
+					S_{HAM} \sim S_{GLU}
+				\end{equation*}
+			\end{block}		
+			
 			\begin{itemize}
 				\item GLU generates negative orientation
 				\item HAM prevents knee hyperextension
@@ -342,7 +343,6 @@
 \subsection[Methodology]{Muscle stimuli during the swing phase}
 \begin{frame}
 	\frametitle{Swing phase: pre-swing}
-	The VAS of swing leg should be inhibit to allow compliance behavior 
 	\begin{block}{}
 		The new stimulation of \textbf{VAS} is given by
 		\begin{equation*}
@@ -354,7 +354,7 @@
 		\begin{column}{.5\textwidth}
 			\begin{figure}
 				\centering
-				\includegraphics[width=.5\textheight]{images/new_model/swing/muscle_start.pdf}
+				\includegraphics[width=.5\textheight]{images/new_model/swing/muscle_pre_vas.pdf}
 			\end{figure}
 		\end{column}
 		\begin{column}{.5\textwidth}
@@ -363,18 +363,20 @@
 				\item $k_{bw}$: gain proportional to body weight
 				\item $F_{\textrm{leg}}^{\textrm{ctr}}$: force applied on contralateral leg
 			\end{itemize}
+			\begin{exampleblock}{}
+				The VAS of swing leg should be inhibit to allow compliance behavior 
+			\end{exampleblock}
 		\end{column}
 	\end{columns}	
 \end{frame}
 
 \begin{frame}
 	\frametitle{Swing phase: pre-swing}
-	The model initiate swing incresing HFL and decresing GLU stimulation
-	%The new stimulation of \textbf{HFL} and \textbf{GLU} is given by
 	\begin{block}{}
+		The new stimulation of \textbf{HFL} and \textbf{GLU} is given by
 		\begin{align*}
-			S_{HFL}(t)&=  k_p (\theta-\theta_{ref}) + k_d \dot{\theta} + \Delta S,  \\
-			S_{GLU}(t)&=  k_p (\theta-\theta_{ref}) + k_d \dot{\theta} - \Delta S
+			S_{HFL}(t)&=  k_p (\theta-\theta_{ref})_{HFL} + k_d \dot{\theta}_{HFL} + \Delta S,  \\
+			S_{GLU}(t)&=  k_p (\theta-\theta_{ref})_{GLU} + k_d \dot{\theta}_{GLU} - \Delta S
 		\end{align*}
 	\end{block}
 	
@@ -382,7 +384,7 @@
 		\begin{column}{.5\textwidth}
 			\begin{figure}
 				\centering
-				\includegraphics[width=.5\textheight]{images/new_model/swing/muscle_start_glu.pdf}
+				\includegraphics[width=.5\textheight]{images/new_model/swing/muscle_pre_glu.pdf}
 			\end{figure}
 		\end{column}
 		\begin{column}{.5\textwidth}
@@ -390,24 +392,44 @@
 			\begin{itemize}
 				\item $\Delta S$: constant parameter
 			\end{itemize}
+			\begin{exampleblock}{}
+				The model initiate swing incresing HFL and decresing GLU stimulation
+			\end{exampleblock}		
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Swing phase: initial swing}
+	
+	\begin{block}{}
+		The new stimulation of \textbf{HFL}, \textbf{GLU} and \textbf{HAM} is given by
+		\begin{align*}
+			S_{HFL}(t)&=  k_p (\theta-\theta_{ref})_{HFL} + G_{HFL}\Delta L_{HFL} - G_{HAM,HFL} \Delta L_{HAM}(t-\Delta t_{HAM}), \\
+			S_{GLU}(t)&=  S_{0,GLU} + G_{GLU}F_{GLU}(t-\Delta t_{GLU}), \\
+			S_{HAM}(t)&=  S_{0,HAM} + G_{HAM} F_{HAM} (t-\Delta t_{HAM}) 
+		\end{align*}
+	\end{block}
+	
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=.5\textheight]{images/new_model/swing/muscle_initial.pdf}
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{exampleblock}{}
+				The new formulation improve gait stability by enforcing swing-leg retraction
+			\end{exampleblock}
 		\end{column}
 	\end{columns}	
 \end{frame}
 
 \section{Results}
+% luca slides
 
-
-\begin{frame}
-	\begin{exampleblock}{Introduction}
-		Hi guys, the title of the article is "  " was presented in the conference " " in 2010 by the authors "  " .
-	\end{exampleblock}
-	\begin{exampleblock}{Motivation}
-		The bipedal spring-mass model is a well-know model that can describe the locomotion  dynamics of legged mechanisms.
-	\end{exampleblock}
-	\begin{exampleblock}
-		Add support files of spinal reflexes
-	\end{exampleblock}
-\end{frame}
 
 \end{document}
 
