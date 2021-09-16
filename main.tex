@@ -14,14 +14,14 @@
 \usepackage{subfig}
 \captionsetup[subfigure]{font=scriptsize, justification=centering}
 
-% break equation
+% math package
 \usepackage{amsmath}
 
-% outile configuration
+% outline configuration
 \setbeamerfont{section in toc}{size=\large}
 \setbeamerfont{subsection in toc}{size=\small}
-%\setbeamertemplate{section in toc}[sections numbered]
-%\setbeamertemplate{subsection in toc}[subsections numbered]
+\setbeamertemplate{section in toc}[sections numbered]
+
  
 % introduction parameters
 \title[Article presentation]{A muscle-reflex model that encodes principles of legged mechanics, produces human walking dynamics and muscle activities}
@@ -39,7 +39,7 @@
 {
 	\begin{frame}
 		\frametitle{Outline}
-		\setlength{\parskip}{0.8ex}
+		%\setlength{\parskip}{1.2ex}
 		\tableofcontents[currentsection]
 	\end{frame}
 }
@@ -48,7 +48,7 @@
 {
 	\begin{frame}
 		\frametitle{Table of contents}
-		\setlength{\parskip}{2ex}
+		%\setlength{\parskip}{.2ex}
 		\tableofcontents[currentsection,currentsubsection]
 	\end{frame}
 }
