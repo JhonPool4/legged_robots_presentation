@@ -16,7 +16,13 @@
 
 % break equation
 \usepackage{amsmath}
-\usepackage{breqn}
+
+% outile configuration
+\setbeamerfont{section in toc}{size=\large}
+\setbeamerfont{subsection in toc}{size=\small}
+%\setbeamertemplate{section in toc}[sections numbered]
+%\setbeamertemplate{subsection in toc}[subsections numbered]
+ 
 % introduction parameters
 \title[Article presentation]{A muscle-reflex model that encodes principles of legged mechanics, produces human walking dynamics and muscle activities}
 \subtitle{
@@ -32,7 +38,8 @@
 \AtBeginSection[]
 {
 	\begin{frame}
-		\frametitle{Table of contents}
+		\frametitle{Outline}
+		\setlength{\parskip}{2ex}
 		\tableofcontents[currentsection]
 	\end{frame}
 }
@@ -41,6 +48,7 @@
 {
 	\begin{frame}
 		\frametitle{Table of contents}
+		\setlength{\parskip}{2ex}
 		\tableofcontents[currentsection,currentsubsection]
 	\end{frame}
 }
