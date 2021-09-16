@@ -236,7 +236,7 @@
 
 \subsection[Methodology]{Muscle stimuli during the stance phase}
 \begin{frame}
-	\frametitle{Muscle stimuli during the stance phase}
+	\frametitle{Stance phase: initial contact}
 	\begin{itemize}
 		\item Vastus group muscle (VAS) generates knee extension motion
 		\item Soleus muscle (SOL) generates ankle plantarflexion motion
@@ -268,7 +268,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Muscle stimuli during the stance phase}
+	\frametitle{Stance phase: initial contact}
 	
 	\begin{block}{}
 		The stimulation of \textbf{GAS} is given by
@@ -304,7 +304,7 @@
 
 
 \begin{frame}
-	\frametitle{Muscle stimuli during the stance phase}
+	\frametitle{Stance phase: loading response}
 	
 	\begin{block}{}
 		The stimulation of \textbf{GLU} and \textbf{HFL}  is given by
@@ -339,11 +339,60 @@
 \end{frame}
 
 
-%\subsection[Methodology]{Muscle stimuli during the swing phase}
+\subsection[Methodology]{Muscle stimuli during the swing phase}
+\begin{frame}
+	\frametitle{Swing phase: pre-swing}
+	The VAS of swing leg should be inhibit to allow compliance behavior 
+	\begin{block}{}
+		The new stimulation of \textbf{VAS} is given by
+		\begin{equation*}
+			S_{VAS}(t)=S_{0,VAS} + G_{VAS} F_{VAS} (t-\Delta t_{VAS}) - k_{bw}|F_{\textrm{leg}}^{\textrm{ctr}}|
+		\end{equation*}
+	\end{block}
+	
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=.5\textheight]{images/new_model/swing/muscle_start.pdf}
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			where,
+			\begin{itemize}
+				\item $k_{bw}$: gain proportional to body weight
+				\item $F_{\textrm{leg}}^{\textrm{ctr}}$: force applied on contralateral leg
+			\end{itemize}
+		\end{column}
+	\end{columns}	
+\end{frame}
 
-
-
-
+\begin{frame}
+	\frametitle{Swing phase: pre-swing}
+	The model initiate swing incresing HFL and decresing GLU stimulation
+	%The new stimulation of \textbf{HFL} and \textbf{GLU} is given by
+	\begin{block}{}
+		\begin{align*}
+			S_{HFL}(t)&=  k_p (\theta-\theta_{ref}) + k_d \dot{\theta} + \Delta S,  \\
+			S_{GLU}(t)&=  k_p (\theta-\theta_{ref}) + k_d \dot{\theta} - \Delta S
+		\end{align*}
+	\end{block}
+	
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[width=.5\textheight]{images/new_model/swing/muscle_start_glu.pdf}
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			where,
+			\begin{itemize}
+				\item $\Delta S$: constant parameter
+			\end{itemize}
+		\end{column}
+	\end{columns}	
+\end{frame}
 
 \section{Results}
 
