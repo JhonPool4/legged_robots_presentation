@@ -108,7 +108,7 @@
 			\only<2>{\item Replacing the point of mass with a trunk}
 			\only<3,4>{\item Vastus group muscle (VAS) generates knee extension motion
 				\item Soleus muscle (SOL) generates ankle plantarflexion motion}
-			\only<5>{\item Gastrocnemius muscle (GAS) generates knee flexion and ankle plantarflexion motion
+			\only<5>{\item Gastrocnemius muscle (GAS) relates knee flexion and ankle plantarflexion
 				\item Tibialis anterior muscle (TA) generates ankle dorsiflexion motion}
 			\only<6>{\item Gluteus muscle group (GLU) generates negative orientation
 				\item Hip flexor muscle group (HFL)  generate positive orientation}	 	 
@@ -155,7 +155,7 @@
 					\begin{column}{.5\textwidth}
 						\centering
 						\subfloat[Knee extension]{\includegraphics[height=.20\textheight]{images/knee_extension.pdf}} \\
-						\subfloat[Ankle dorsiflexion]{\includegraphics[height=.20\textheight]{images/ankle_planarflexion.pdf}}
+						\subfloat[Ankle plantarflexion]{\includegraphics[height=.20\textheight]{images/ankle_planarflexion.pdf}}
 					\end{column}  
 				\end{columns}
 				
@@ -169,7 +169,7 @@
 					\begin{column}{.5\textwidth}
 						\centering
 						\includegraphics[height=.5\textheight]{images/new_model/stance/muscle_vas_sol_overextension.pdf}
-						\caption{overextension case}
+						\caption{Overextension case}
 					\end{column}  
 				\end{columns}
 				
@@ -180,11 +180,18 @@
 						\caption{New bipedal locomotion model with muscles}
 					\end{column}
 					\begin{column}{.5\textwidth}
-						\begin{itemize}
-							\item GAS prevents knee overextension  \\[1em]
-							\item GAS contributes to generate compliant behavior \\[1em]
-							\item TA prevents ankle overextension
-						\end{itemize}
+						\begin{exampleblock}{}
+							\begin{itemize}
+								\item GAS prevents knee overextension  \\[.4em]
+								\item GAS contributes to generate compliant behavior \\[.4em]
+								\item TA prevents ankle overextension
+							\end{itemize}
+						\end{exampleblock}
+					\begin{figure}
+							\centering
+							\includegraphics[height=.25\textheight]{images/ankle_dorsiflexion.pdf}
+							\caption{Ankle dorsiflexion}
+						\end{figure}
 					\end{column}
 				\end{columns}
 				
@@ -195,10 +202,12 @@
 						\caption{New bipedal locomotion model with muscles}
 					\end{column}
 					\begin{column}{.5\textwidth}
-						\begin{itemize}
-							\item GLU and HFL maintain the balance of the trunk  \\ [1em]
-							\item Hamstring muscle group (HAM) prevents knee hyperextension
-						\end{itemize}
+						\begin{exampleblock}{}
+							\begin{itemize}
+								\item GLU and HFL maintain the balance of the trunk  \\ [1em]
+								\item Hamstring muscle group (HAM) prevents knee overextension
+							\end{itemize}
+						\end{exampleblock}
 					\end{column}
 				\end{columns}	
 			\end{overprint}			
@@ -267,10 +276,13 @@
 				\end{figure}
 			\end{column}
 			\begin{column}{.5\textwidth}
-				\begin{itemize}
-					\item Vastus group muscle (VAS) generates knee extension motion
-					\item Soleus muscle (SOL) generates ankle plantarflexion motion
-				\end{itemize}
+				\begin{exampleblock}{}
+					\begin{itemize}
+						\item Vastus group muscle (VAS) generates knee extension motion
+						\item Soleus muscle (SOL) generates ankle plantarflexion motion
+					\end{itemize}				
+				\end{exampleblock}
+
 			\end{column}
 		\end{columns}
 	\end{frame}
@@ -301,11 +313,13 @@
 				\end{figure}
 			\end{column}
 			\begin{column}{.5\textwidth}
-				\begin{itemize}
-					\item GAS prevents knee overextension 
-					\item GAS contributes to generate compliant behavior 
-					\item TA prevents ankle overextension
-				\end{itemize}
+				\begin{exampleblock}{}
+					\begin{itemize}
+						\item GAS prevents knee overextension 
+						\item GAS contributes to generate compliant behavior 
+						\item TA prevents ankle overextension
+					\end{itemize}
+				\end{exampleblock}
 			\end{column}
 		\end{columns}
 	\end{frame}
@@ -337,12 +351,13 @@
 						S_{HAM} \sim S_{GLU}
 					\end{equation*}
 				\end{block}		
-				
-				\begin{itemize}
-					\item GLU generates negative orientation
-					\item HAM prevents knee hyperextension
-					\item HFL generate positive orientation				
-				\end{itemize}
+				\begin{exampleblock}{}
+					\begin{itemize}
+						\item GLU generates negative orientation
+						\item HAM prevents knee hyperextension	
+						\item HFL generate positive orientation				
+					\end{itemize}
+				\end{exampleblock}
 			\end{column}
 		\end{columns}
 	\end{frame}
@@ -414,9 +429,9 @@
 		\begin{block}{}
 			The new stimulation of \textbf{HFL}, \textbf{GLU} and \textbf{HAM} is given by
 			\begin{align*}
-				S_{HFL}(t)&=  k_p (\theta-\theta_{ref})_{HFL} + G_{HFL}\Delta L_{HFL} - G_{HAM,HFL} \Delta L_{HAM}(t-\Delta t_{HAM}), \\
 				S_{GLU}(t)&=  S_{0,GLU} + G_{GLU}F_{GLU}(t-\Delta t_{GLU}), \\
-				S_{HAM}(t)&=  S_{0,HAM} + G_{HAM} F_{HAM} (t-\Delta t_{HAM}) 
+				S_{HAM}(t)&=  S_{0,HAM} + G_{HAM} F_{HAM} (t-\Delta t_{HAM}), \\
+				S_{HFL}(t)&=  k_p (\theta-\theta_{ref}) + G_{HFL}\Delta L_{HFL}(t-\Delta t_{HFL}) - G_{HAM,HFL} \Delta L_{HAM}(t-\Delta t_{HAM})
 			\end{align*}
 		\end{block}
 		
@@ -436,150 +451,171 @@
 	\end{frame}
 	
 	% luca slides
-	\section{Results}
-	\subsection[Results]{Walking Gait}
+\section{Results}
+\subsection[Results]{Walking Gait}
+
+\begin{frame}
+	\frametitle{Walking Gait}	
 	
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=.45\textheight]{images/graphic_3.pdf}
+				\caption{Walking self-organized from dynamic interplay with ground}	
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{itemize}
+				\item The modeled muscle reflexes include signal transport delays of up to 20 ms
+				\item The vertical GRF of the legs in stance shows the M-shape pattern characteristic for walking gaits
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection[Results]{Steady-State Patterns of Joint Angles and Torques}
+
+\begin{frame}
+	\frametitle{Steady-State Patterns of Joint Angles and Torques}
+	
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=.75\textheight]{images/graphic_4.pdf}
+				\caption{Maximum cross-correlation coefficients R for each quantity}	
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Steady-State Patterns of Joint Angles and Torques}
+	
+	\begin{block}{}
+		Maximum cross-correlation coefficients R quantify the agreement between model and human trajectories. $R = 1$ indicates perfect agreement and $R = 0$ indicates no agreement.
+	\end{block}	
+	
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=.29\textheight]{images/table_quantity_articulation.pdf}
+				\caption{Maximum cross-correlation coefficients R for each quantity}	
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{itemize}
+				\item The performance of the model, in general, is very close to the human movement
+				\item The major difference occurs in the knee and hip torques in stance
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection[Results]{Predicted Motor Output}
+
+\begin{frame}
+	\frametitle{Predicted Motor Output}
+	
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=.75\textheight]{images/graphic_4.pdf}
+				\caption{Maximum cross-correlation coefficients R for each quantity}	
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{itemize}
+				\item The reflex model produce both walking dynamics and kinematic as predicts known activation patterns
+				\item The model can also be evaluated with maximum cross-correlation coefficients R
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Predicted Motor Output}
+	
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=.45\textheight]{images/new_model/stance/muscle_all.pdf}
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=.32\textheight]{images/stance_table.pdf}
+				\caption{Maximum cross-correlation coefficients R for each muscle (stance)}	
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Predicted Motor Output}
+	
+	\begin{columns}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=.45\textheight]{images/new_model/swing/muscle_all.pdf}
+			\end{figure}
+		\end{column}
+		\begin{column}{.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=.23\textheight]{images/swing_table.pdf}
+				\caption{Maximum cross-correlation coefficients R for each muscle (swing)}	
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection[Results]{Adaptation to Slopes}
+
+\begin{frame}
+	\frametitle{Adaptation to Slopes}
+	
+	The model can adapt to slopes ($ < \pm 4\% $) without parameter interventions.
+	
+	\begin{figure}
+		\centering
+		\includegraphics[height=.65\textheight]{images/slope_adaptation.pdf}
+		\caption{Slope adaptation}	
+	\end{figure}
+	
+\end{frame}
+
+\section{Conclusion}	
+% frame: solution
+\begin{frame}
+	\frametitle{Conclusion}
+	
+	\begin{columns}
+		\begin{column}{1.0\textwidth}
+			\begin{itemize}
+				\item Mechanics and motor control cannot be viewed separately in human locomotion
+				\item After tuning the resulting muscle reflexes that, by combining these principles, human walking dynamics and leg kinematics emerge and the model tolerates ground disturbances and adapts to slopes without parameter interventions
+				\item The model predicts some individual muscle activation patterns observed in walking experiments
+				\item The interplay between mechanics and motor control is not only important, but could for some muscles dominate human motor output in locomotion
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+% proposal
+\section{Article writing proposal}
 	\begin{frame}
-		\frametitle{Walking Gait}	
-		
-		\begin{columns}
-			\begin{column}{.5\textwidth}
-				\begin{figure}
-					\centering
-					\includegraphics[height=.45\textheight]{images/graphic_3.pdf}
-					\caption{Walking self-organized from dynamic interplay with ground}	
-				\end{figure}
-			\end{column}
-			\begin{column}{.5\textwidth}
-				\begin{itemize}
-					\item The modeled muscle reflexes include signal transport delays of up to 20 ms
-					\item The vertical GRF of the legs in stance shows the M-shape pattern characteristic for walking gaits
-				\end{itemize}
-			\end{column}
-		\end{columns}
-	\end{frame}
-	
-	\subsection[Results]{Steady-State Patterns of Joint Angles and Torques}
-	
-	\begin{frame}
-		\frametitle{Steady-State Patterns of Joint Angles and Torques}
-		
-		\begin{block}{}
-			Maximum cross-correlation coefficients R quantify the agreement between model and human trajectories. $R = 1$ indicates perfect agreement and $R = 0$ indicates no agreement.
-		\end{block}	
-		
-		\begin{columns}
-			\begin{column}{.5\textwidth}
-				\begin{figure}
-					\centering
-					\includegraphics[height=.25\textheight]{images/table_quantity_articulation.pdf}
-					\caption{Maximum cross-correlation coefficients R for each quantity}	
-				\end{figure}
-			\end{column}
-			\begin{column}{.5\textwidth}
-				\begin{itemize}
-					\item The performance of the model, in general, is very close to the human movement
-					\item The major difference occurs in the knee and hip torques in stance
-				\end{itemize}
-			\end{column}
-		\end{columns}
-	\end{frame}
-	
-	\subsection[Results]{Predicted Motor Output}
-	
-	\begin{frame}
-		\frametitle{Predicted Motor Output}
-		
-		\begin{columns}
-			\begin{column}{.5\textwidth}
-				\begin{figure}
-					\centering
-					\includegraphics[height=.75\textheight]{images/graphic_4.pdf}
-					\caption{Maximum cross-correlation coefficients R for each quantity}	
-				\end{figure}
-			\end{column}
-			\begin{column}{.5\textwidth}
-				\begin{itemize}
-					\item The reflex model produce both walking dynamics and kinematic as predicts known activation patterns
-					\item The model can also be evaluated with maximum cross-correlation coefficients R
-				\end{itemize}
-			\end{column}
-		\end{columns}
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Predicted Motor Output}
-		
-		\begin{columns}
-			\begin{column}{.5\textwidth}
-				\begin{figure}
-					\centering
-					\includegraphics[height=.45\textheight]{images/new_model/stance/muscle_all.pdf}
-				\end{figure}
-			\end{column}
-			\begin{column}{.5\textwidth}
-				\begin{figure}
-					\centering
-					\includegraphics[height=.30\textheight]{images/stance_table.pdf}
-					\caption{Maximum cross-correlation coefficients R for each muscle (stance)}	
-				\end{figure}
-			\end{column}
-		\end{columns}
-	\end{frame}
-	
-	\begin{frame}
-		\frametitle{Predicted Motor Output}
-		
-		\begin{columns}
-			\begin{column}{.5\textwidth}
-				\begin{figure}
-					\centering
-					\includegraphics[height=.45\textheight]{images/new_model/swing/muscle_all.pdf}
-				\end{figure}
-			\end{column}
-			\begin{column}{.5\textwidth}
-				\begin{figure}
-					\centering
-					\includegraphics[height=.22\textheight]{images/swing_table.pdf}
-					\caption{Maximum cross-correlation coefficients R for each muscle (swing)}	
-				\end{figure}
-			\end{column}
-		\end{columns}
-	\end{frame}
-	
-	\subsection[Results]{Adaptation to Slopes}
-	
-	\begin{frame}
-		\frametitle{Adaptation to Slopes}
-		
-		The model can adapt to slopes ($ < \pm 4\% $) without parameter interventions.
-		
-		\begin{figure}
-			\centering
-			\includegraphics[height=.65\textheight]{images/slope_adaptation.pdf}
-			\caption{Slope adaptation}	
-		\end{figure}
-		
-	\end{frame}
-	
-	\section{Conclusion}	
-	% frame: solution
-	\begin{frame}
-		\frametitle{Conclusion}
-		
-		\begin{columns}
-			\begin{column}{1.0\textwidth}
-				\begin{itemize}
-					\item Mechanics and motor control cannot be viewed separately in human locomotion
-					%\item The principles of legged mechanics were fundamental to simplify the dynamics of walking
-					\item After tuning the resulting muscle reflexes that, by combining these principles, human walking dynamics and leg kinematics emerge and the model tolerates ground disturbances and adapts to slopes without parameter interventions
-					\item The model predicts some individual muscle activation patterns observed in walking experiments
-					\item The interplay between mechanics and motor control is not only important, but could for some muscles dominate human motor output in locomotion
-				\end{itemize}
-			\end{column}
-		\end{columns}
-	\end{frame}
-	
+	\frametitle{Article writing proposal}
+	\centering
+	\LARGE
+	\bf
+	Tuning the walking control parameters of a legged robot using a machine learning method
+\end{frame}
+
 \end{document}
-
-
